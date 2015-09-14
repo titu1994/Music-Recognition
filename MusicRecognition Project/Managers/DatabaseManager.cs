@@ -27,6 +27,7 @@ namespace MusicRecognition_Project
         {
             if (engine == null)
             {
+                Console.WriteLine(Application.CommonAppDataPath);
                 engine = new DBreezeEngine(Application.CommonAppDataPath + @"\Music Recogition\");
 
                 DBreeze.Utils.CustomSerializator.Serializator = JsonConvert.SerializeObject;

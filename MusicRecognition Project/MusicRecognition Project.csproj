@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\CustomWaveViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Managers\AudioManager.cs" />
     <Compile Include="Managers\DataPoint.cs" />
     <Compile Include="Frontend.cs">
@@ -68,6 +71,12 @@
     <Compile Include="Managers\DatabaseManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaveForm.Designer.cs">
+      <DependentUpon>WaveForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Frontend.resx">
       <DependentUpon>Frontend.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WaveForm.resx">
+      <DependentUpon>WaveForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

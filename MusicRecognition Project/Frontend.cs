@@ -10,14 +10,18 @@ using System.Windows.Forms;
 
 namespace MusicRecognition_Project
 {
-    public partial class Frontend : Form
+    public partial class Frontend : Form, AudioManager.AudioManagerCallbacks
     {
         private DatabaseHandler db;
+        private AudioManager audioManager;
 
         public Frontend()
         {
             InitializeComponent();
+            db = new DatabaseHandler();
             db.InitDatabase();
+
+            audioManager = new AudioManager(this);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -25,6 +29,17 @@ namespace MusicRecognition_Project
             base.OnFormClosing(e);
 
             db.ReleaseDatabase();
+        }
+
+        public void DisplaySpectrum(double[,] highscores, double[,] recordPoints)
+        {
+            string filename = audioManager.CreateWAVFile(audioManager.GetAllSamples());
+
+            WaveForm wf = new WaveForm();
+            wf.filename = filename;
+            wf.highscores = highscores;
+            wf.recordpoints = recordPoints;
+            wf.Show();
         }
     }
 }
